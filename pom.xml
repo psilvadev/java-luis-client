@@ -7,7 +7,7 @@
     <groupId>br.com.sankhya</groupId>
     <artifactId>luis-client</artifactId>
     <packaging>jar</packaging>
-    <version>0.1.0</version>
+    <version>1.0.0</version>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>

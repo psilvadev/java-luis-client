@@ -2,11 +2,11 @@ package br.com.sankhya.luis.model;
 
 import org.json.JSONObject;
 
-public class Intent {
+public class LuisIntent {
     private String name;
     private double score;
 
-    public Intent(JSONObject json) {
+    public LuisIntent(JSONObject json) {
         if (json == null)
             throw new NullPointerException("JSON cannot be null");
 

@@ -6,13 +6,13 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Result {
+public class LuisResult {
     private String query;
-    private Intent topScoringIntent;
-    private List<Intent> intents;
-    private List<Entity> entities;
+    private LuisIntent topScoringIntent;
+    private List<LuisIntent> intents;
+    private List<LuisEntity> entities;
 
-    public Result(JSONObject json) {
+    public LuisResult(JSONObject json) {
         if (json == null)
             throw new NullPointerException("JSON cannot be null");
 
@@ -23,15 +23,15 @@ public class Result {
         return this.query;
     }
 
-    public Intent getTopScoringIntent() {
+    public LuisIntent getTopScoringIntent() {
         return this.topScoringIntent;
     }
 
-    public List<Intent> getIntents() {
+    public List<LuisIntent> getIntents() {
         return this.intents;
     }
 
-    public List<Entity> getEntities() {
+    public List<LuisEntity> getEntities() {
         return this.entities;
     }
 
@@ -41,7 +41,7 @@ public class Result {
         this.entities = new ArrayList<>();
 
         JSONObject jsonTopScoringIntent = json.optJSONObject("topScoringIntent");
-        this.topScoringIntent = (jsonTopScoringIntent != null) ? new Intent(jsonTopScoringIntent) : null;
+        this.topScoringIntent = (jsonTopScoringIntent != null) ? new LuisIntent(jsonTopScoringIntent) : null;
 
         JSONArray jsonIntents = json.optJSONArray("intents");
 
@@ -52,7 +52,7 @@ public class Result {
                 JSONObject jsonIntent = jsonIntents.optJSONObject(i);
 
                 if (jsonIntent != null) {
-                    this.intents.add(new Intent(jsonIntent));
+                    this.intents.add(new LuisIntent(jsonIntent));
                 }
             }
         }
@@ -64,7 +64,7 @@ public class Result {
                 JSONObject jsonEntity = jsonEntities.optJSONObject(i);
 
                 if (jsonEntity != null) {
-                    this.entities.add(new Entity(jsonEntity));
+                    this.entities.add(new LuisEntity(jsonEntity));
                 }
             }
         }

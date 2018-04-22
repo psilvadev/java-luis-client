@@ -5,7 +5,7 @@ import org.json.JSONObject;
 
 import java.util.Map;
 
-public class Entity {
+public class LuisEntity {
     private String name;
     private String type;
     private int startIndex;
@@ -13,7 +13,7 @@ public class Entity {
     private double score;
     private Map<String, Object> resolution;
 
-    public Entity(JSONObject json) {
+    public LuisEntity(JSONObject json) {
         if (json == null)
             throw new NullPointerException("JSON cannot be null");
 
