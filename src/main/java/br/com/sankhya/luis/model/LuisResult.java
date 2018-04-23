@@ -39,7 +39,7 @@ public class LuisResult {
     }
 
     /**
-     * Obtém a intenção que possui maior pontuação.
+     * Obtém a intenção com maior pontuação.
      *
      * @return a intenção com maior pontuação
      */
