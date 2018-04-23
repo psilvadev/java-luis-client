@@ -83,7 +83,7 @@ public class LuisClient {
 
     /**
      * @param query texto que precisa ser analisado e previsto
-     * @return uma objeto contendo a requisição da solicitação
+     * @return um objeto contendo a requisição
      * @throws URISyntaxException se a sintaxe do URI estiver incorreta
      */
     private HttpGet buildRequest(String query) throws URISyntaxException {
