@@ -21,7 +21,7 @@ public class LuisClient {
     private boolean verbose;
 
     public LuisClient(String appId, String appKey) {
-        this(appId, appKey, false, true);
+        this(appId, appKey, false);
     }
 
     public LuisClient(String appId, String appKey, boolean staging) {
