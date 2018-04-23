@@ -6,11 +6,21 @@ import org.json.JSONObject;
 
 import java.util.*;
 
+/**
+ * @author Tiago Peres
+ * @version 1.0
+ */
 public class JsonUtils {
+    /**
+     * Converts a JSONObject to a Map<String, Object>
+     *
+     * @param jsonObject A JSONObject that needs to be converted to a Map<String, Object>
+     * @return A Map<String, Object> that contains the data of the JSONObject
+     */
     public static Map<String, Object> jsonObjectToMap(JSONObject jsonObject) {
         Map<String, Object> map = new HashMap<>();
-        Iterator<String> keysItr = jsonObject.keys();
 
+        Iterator<String> keysItr = jsonObject.keys();
         while (keysItr.hasNext()) {
             try {
                 String key = keysItr.next();
@@ -33,6 +43,12 @@ public class JsonUtils {
         return map;
     }
 
+    /**
+     * Converts a JSONArray to a List<Object>
+     *
+     * @param jsonArray A JSONArray that needs to be converted to a List<Object>
+     * @return A List<Object> that contains the data of the JSONArray
+     */
     public static List<Object> jsonArrayToList(JSONArray jsonArray) {
         List<Object> list = new ArrayList<>();
 

@@ -13,6 +13,10 @@ import org.json.JSONObject;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+/**
+ * @author Tiago Peres
+ * @version 1.0
+ */
 public class LuisClient {
     private final String URL = "https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/";
     private String appId;
@@ -35,6 +39,13 @@ public class LuisClient {
         this.verbose = verbose;
     }
 
+    /**
+     * Inicia o procedimento de previsão para o texto do usuário.
+     *
+     * @param query uma string contendo o texto que precisa ser analisado e previsto
+     * @return um resultado LUIS contendo o conteúdo da resposta enviada pela API
+     * @throws Exception se o serviço estiver indisponível
+     */
     public LuisResult query(String query) throws Exception {
         HttpClient httpClient = HttpClients.createDefault();
 
@@ -43,7 +54,7 @@ public class LuisClient {
         HttpEntity entity = response.getEntity();
 
         if (entity == null) {
-            throw new Exception("Service is temporarily unavailable, please try again later.");
+            throw new Exception("O serviço está temporariamente indisponível. Tente novamente mais tarde.");
         }
 
         return new LuisResult(new JSONObject(EntityUtils.toString(entity)));
