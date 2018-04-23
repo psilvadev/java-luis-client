@@ -24,14 +24,35 @@ public class LuisClient {
     private boolean staging;
     private boolean verbose;
 
+    /**
+     * Constrói um cliente LUIS.
+     *
+     * @param appId  uma string contendo o ID do aplicativo
+     * @param appKey uma string contendo a chave de assinatura
+     */
     public LuisClient(String appId, String appKey) {
         this(appId, appKey, false);
     }
 
+    /**
+     * Constrói um cliente LUIS.
+     *
+     * @param appId   uma string contendo o ID do aplicativo
+     * @param appKey  uma string contendo a chave de assinatura
+     * @param staging um booleano para escolher usar ou não a versão staging
+     */
     public LuisClient(String appId, String appKey, boolean staging) {
         this(appId, appKey, staging, true);
     }
 
+    /**
+     * Constrói um cliente LUIS.
+     *
+     * @param appId   uma string contendo o ID do aplicativo
+     * @param appKey  uma string contendo a chave de assinatura
+     * @param staging um booleano para escolher usar ou não a versão staging
+     * @param verbose um booleano para escolher usar ou não a versão detalhada
+     */
     public LuisClient(String appId, String appKey, boolean staging, boolean verbose) {
         this.appId = appId;
         this.appKey = appKey;
@@ -42,7 +63,7 @@ public class LuisClient {
     /**
      * Inicia o procedimento de previsão para o texto do usuário.
      *
-     * @param query uma string contendo o texto que precisa ser analisado e previsto
+     * @param query texto que precisa ser analisado e previsto
      * @return um resultado LUIS contendo o conteúdo da resposta enviada pela API
      * @throws Exception se o serviço estiver indisponível
      */
@@ -60,6 +81,11 @@ public class LuisClient {
         return new LuisResult(new JSONObject(EntityUtils.toString(entity)));
     }
 
+    /**
+     * @param query texto que precisa ser analisado e previsto
+     * @return uma objeto contendo a requisição da solicitação
+     * @throws URISyntaxException se a sintaxe do URI estiver incorreta
+     */
     private HttpGet buildRequest(String query) throws URISyntaxException {
         URIBuilder builder = new URIBuilder(this.URL + this.appId + "?");
 
