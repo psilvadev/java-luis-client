@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.regex.Pattern;
 
 /**
  * @author Tiago Peres
@@ -25,35 +26,56 @@ public class LuisClient {
     private boolean verbose;
 
     /**
-     * Constrói um cliente LUIS.
+     * Cria um cliente LUIS.
      *
-     * @param appId  uma string contendo o ID do aplicativo
-     * @param appKey uma string contendo a chave de assinatura
+     * @param appId  ID do aplicativo
+     * @param appKey chave de assinatura
+     * @throws IllegalArgumentException se o ID do aplicativo ou chave de assinatura forem inválidos
      */
     public LuisClient(String appId, String appKey) {
         this(appId, appKey, false);
     }
 
     /**
-     * Constrói um cliente LUIS.
+     * Cria um cliente LUIS.
      *
-     * @param appId   uma string contendo o ID do aplicativo
-     * @param appKey  uma string contendo a chave de assinatura
-     * @param staging um booleano para escolher usar ou não a versão staging
+     * @param appId   ID do aplicativo
+     * @param appKey  chave de assinatura
+     * @param staging usar ou não a versão staging
+     * @throws IllegalArgumentException se o ID do aplicativo ou chave de assinatura forem inválidos
      */
     public LuisClient(String appId, String appKey, boolean staging) {
         this(appId, appKey, staging, true);
     }
 
     /**
-     * Constrói um cliente LUIS.
+     * Cria um cliente LUIS.
      *
-     * @param appId   uma string contendo o ID do aplicativo
-     * @param appKey  uma string contendo a chave de assinatura
-     * @param staging um booleano para escolher usar ou não a versão staging
-     * @param verbose um booleano para escolher usar ou não a versão detalhada
+     * @param appId   ID do aplicativo
+     * @param appKey  chave de assinatura
+     * @param staging usar ou não a versão staging
+     * @param verbose usar ou não a versão detalhada
+     * @throws IllegalArgumentException se o ID do aplicativo ou chave de assinatura forem inválidos
      */
     public LuisClient(String appId, String appKey, boolean staging, boolean verbose) {
+        if (appId == null)
+            throw new IllegalArgumentException("O ID do aplicativo não pode ser nulo");
+
+        if (appId.isEmpty())
+            throw new IllegalArgumentException("O ID do aplicativo não pode ser vazio");
+
+        if (Pattern.compile("\\s").matcher(appId).find())
+            throw new IllegalArgumentException("ID de aplicativo inválido");
+
+        if (appKey == null)
+            throw new IllegalArgumentException("A chave de assinatura não pode ser nulo");
+
+        if (appKey.isEmpty())
+            throw new IllegalArgumentException("A chave de assinatura não pode ser vazio");
+
+        if (Pattern.compile("\\s").matcher(appKey).find())
+            throw new IllegalArgumentException("Chave de assinatura inválida");
+
         this.appId = appId;
         this.appKey = appKey;
         this.staging = staging;

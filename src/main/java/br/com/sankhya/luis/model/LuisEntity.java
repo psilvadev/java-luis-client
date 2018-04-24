@@ -18,10 +18,10 @@ public class LuisEntity {
     private Map<String, Object> resolution;
 
     /**
-     * Constrói uma entidade LUIS a partir de um objeto JSON.
+     * Cria uma entidade LUIS a partir de um objeto JSON.
      *
-     * @param json objeto JSON
-     * @throws IllegalArgumentException se o objeto json for nulo
+     * @param json objeto JSON a ser convertido
+     * @throws IllegalArgumentException se o objeto JSON for nulo
      */
     public LuisEntity(JSONObject json) {
         if (json == null)
@@ -31,9 +31,9 @@ public class LuisEntity {
     }
 
     /**
-     * Obtém o nome da entidade extraída pelo LUIS.
+     * Obtém o nome da entidade.
      *
-     * @return o nome da entidade
+     * @return uma string representando o nome da entidade
      */
     public String getName() {
         return this.name;
@@ -42,7 +42,7 @@ public class LuisEntity {
     /**
      * Obtém o tipo da entidade.
      *
-     * @return o tipo da entidade
+     * @return uma string representando o tipo da entidade
      */
     public String getType() {
         return this.type;
@@ -51,7 +51,7 @@ public class LuisEntity {
     /**
      * Obtém o índice no enunciado em que a entidade começa.
      *
-     * @return o índice que a entidade começa
+     * @return um inteiro representando o índice em que a entidade começa
      */
     public int getStartIndex() {
         return this.startIndex;
@@ -60,16 +60,16 @@ public class LuisEntity {
     /**
      * Obtém o índice no enunciado em que a entidade termina.
      *
-     * @return o índice que a entidade termina
+     * @return um inteiro representando o índice em que a entidade termina
      */
     public int getEndIndex() {
         return this.endIndex;
     }
 
     /**
-     * Obtém a pontuação atribuída pelo LUIS à entidade detectada.
+     * Obtém a pontuação atribuída à entidade detectada.
      *
-     * @return a pontuação da entidade
+     * @return um double representando a pontuação atribuída
      */
     public double getScore() {
         return this.score;
@@ -87,7 +87,7 @@ public class LuisEntity {
     /**
      * Tem como objetivo popular a entidade LUIS a partir de um objeto JSON.
      *
-     * @param json objeto JSON
+     * @param json objeto JSON a ser convertido
      */
     private void loadFromJSON(JSONObject json) {
         this.name = json.optString("entity");

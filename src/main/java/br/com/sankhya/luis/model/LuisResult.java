@@ -17,10 +17,10 @@ public class LuisResult {
     private List<LuisEntity> entities;
 
     /**
-     * Constrói um resultado LUIS a partir de um objeto JSON.
+     * Cria um resultado LUIS a partir de um objeto JSON.
      *
-     * @param json objeto JSON
-     * @throws IllegalArgumentException se o objeto json for nulo
+     * @param json objeto JSON a ser convertido
+     * @throws IllegalArgumentException se o objeto JSON for nulo
      */
     public LuisResult(JSONObject json) {
         if (json == null)
@@ -32,23 +32,23 @@ public class LuisResult {
     /**
      * Obtém a consulta enviada para o LUIS.
      *
-     * @return a consulta enviada
+     * @return uma string representando a consulta enviada
      */
     public String getQuery() {
         return this.query;
     }
 
     /**
-     * Obtém a intenção com maior pontuação.
+     * Obtém a intenção com maior pontuação atribuída.
      *
-     * @return a intenção com maior pontuação
+     * @return a intenção com maior pontuação atribuída
      */
     public LuisIntent getTopScoringIntent() {
         return this.topScoringIntent;
     }
 
     /**
-     * Obtém as intenções encontradas no texto da consulta.
+     * Obtém uma lista de intenções encontradas no texto da consulta.
      *
      * @return uma lista de intenções
      */
@@ -57,7 +57,7 @@ public class LuisResult {
     }
 
     /**
-     * Obtém as entidades encontradas no texto da consulta.
+     * Obtém uma lista de entidades encontradas no texto da consulta.
      *
      * @return uma lista de entidades
      */
@@ -68,7 +68,7 @@ public class LuisResult {
     /**
      * Tem como objetivo popular o resultado LUIS a partir de um objeto JSON.
      *
-     * @param json objeto JSON
+     * @param json objeto JSON a ser convertido
      */
     private void loadFromJSON(JSONObject json) {
         this.query = json.optString("query");

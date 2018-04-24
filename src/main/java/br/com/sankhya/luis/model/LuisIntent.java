@@ -11,10 +11,10 @@ public class LuisIntent {
     private double score;
 
     /**
-     * Constrói uma intenção LUIS a partir de um objeto JSON.
+     * Cria uma intenção LUIS a partir de um objeto JSON.
      *
-     * @param json objeto JSON
-     * @throws IllegalArgumentException se o objeto json for nulo
+     * @param json objeto JSON a ser convertido
+     * @throws IllegalArgumentException se o objeto JSON for nulo
      */
     public LuisIntent(JSONObject json) {
         if (json == null)
@@ -24,18 +24,18 @@ public class LuisIntent {
     }
 
     /**
-     * Obtém o nome da intenção extraída pelo LUIS.
+     * Obtém o nome da intenção.
      *
-     * @return o nome da intenção
+     * @return uma string representando o nome da intenção
      */
     public String getName() {
         return this.name;
     }
 
     /**
-     * Obtém a pontuação atribuída pelo LUIS à intenção detectada.
+     * Obtém a pontuação atribuída à intenção detectada.
      *
-     * @return a pontuação da intenção
+     * @return um double representando a pontuação atribuída
      */
     public double getScore() {
         return this.score;
@@ -44,7 +44,7 @@ public class LuisIntent {
     /**
      * Tem como objetivo popular a intenção LUIS a partir de um objeto JSON.
      *
-     * @param json objeto JSON
+     * @param json objeto JSON a ser convertido
      */
     private void loadFromJSON(JSONObject json) {
         this.name = json.optString("intent");
